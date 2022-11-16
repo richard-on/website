@@ -16,5 +16,3 @@ spec:
       protocol: TCP
   selector:
     name: website
-status:
-  loadBalancer: {}
