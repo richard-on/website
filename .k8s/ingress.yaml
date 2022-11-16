@@ -1,12 +1,13 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  labels:
+    app: website
   name: website
 spec:
   tls:
     - hosts:
         - richardhere.dev
-        - 38.242.149.115
       secretName: richardhere-ssl
   rules:
     - host: richardhere.dev
