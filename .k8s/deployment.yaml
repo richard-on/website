@@ -51,7 +51,7 @@ spec:
             - name: SENTRY_TSR
               value: "1"
           resources: {}
-      restartPolicy: Always
+      restartPolicy: Never
       imagePullSecrets:
         - name: github-container-registry
 status: {}
