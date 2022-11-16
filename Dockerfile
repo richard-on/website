@@ -19,7 +19,7 @@ COPY --from=builder /website/run /website/run
 # COPY --from=builder /website/etc /website/etc
 COPY --from=builder /website/static /website/static
 
-EXPOSE 80 443
+EXPOSE 80
 
 RUN mkdir -p /website/logs && \
     apk update && apk add curl && apk add --no-cache bash && \

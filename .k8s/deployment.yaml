@@ -22,14 +22,13 @@ spec:
                 - -f
                 - -k
                 - http://127.0.0.1/
-            initialDelaySeconds: 10
+            initialDelaySeconds: 120
             failureThreshold: 10
             periodSeconds: 60
             timeoutSeconds: 5
           name: website
           ports:
             - containerPort: 80
-            - containerPort: 443
           env:
             - name: ENV
               value: "dev"
