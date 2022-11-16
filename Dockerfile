@@ -6,7 +6,7 @@ COPY go.* ./
 RUN go mod download
 COPY . ./
 
-RUN GO111MODULE=1 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
     go build -v -ldflags "-X main.version=0.0.1 -X main.build=`date -u +.%Y%m%d.%H%M%S`" \
     -o run cmd/website/main.go
 
