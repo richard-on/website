@@ -6,12 +6,12 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      name: website
+      app: website
   strategy: {}
   template:
     metadata:
       labels:
-        name: website
+        app: website
     spec:
       containers:
         - image: ghcr.io/richard-on/website:latest
@@ -21,7 +21,7 @@ spec:
                 - curl
                 - -f
                 - -k
-                - https://127.0.0.1/
+                - http://127.0.0.1/
             initialDelaySeconds: 10
             failureThreshold: 10
             periodSeconds: 60
@@ -52,7 +52,7 @@ spec:
             - name: SENTRY_TSR
               value: "1"
           resources: {}
-      restartPolicy: OnFailure
+      restartPolicy: Always
       imagePullSecrets:
         - name: github-container-registry
 status: {}
