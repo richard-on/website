@@ -1,16 +1,16 @@
-version: "3.9"
+version: "3.8"
 services:
 
   website:
     build:
       dockerfile: Dockerfile
       context: .
-    image: richardhere/website
-    container_name: richardhere.dev
+    image: ghcr.io/richard-on/website:latest
+    container_name: website
     restart: unless-stopped
     healthcheck:
       test: [ "CMD", "curl", "-f", "-k", "https://127.0.0.1/" ]
-      start_period: 30s
+      start_period: 10s
       interval: 1m
       timeout: 5s
       retries: 10

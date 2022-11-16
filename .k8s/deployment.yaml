@@ -6,15 +6,27 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: website
+      name: website
+  strategy: {}
   template:
     metadata:
       labels:
-        app: website
+        name: website
     spec:
       containers:
-        - name: website
-          image: ghcr.io/richard-on/website:latest
+        - image: ghcr.io/richard-on/website:latest
+          livenessProbe:
+            exec:
+              command:
+                - curl
+                - -f
+                - -k
+                - https://127.0.0.1/
+            initialDelaySeconds: 10
+            failureThreshold: 10
+            periodSeconds: 60
+            timeoutSeconds: 5
+          name: website
           ports:
             - containerPort: 80
             - containerPort: 443
@@ -39,5 +51,8 @@ spec:
               value: "https://2e8c6894de9047eeada54ca308mkb97b19@o1292241.ingest.sentry.io/4504126252646400"
             - name: SENTRY_TSR
               value: "1"
+          resources: {}
+      restartPolicy: OnFailure
       imagePullSecrets:
         - name: github-container-registry
+status: {}

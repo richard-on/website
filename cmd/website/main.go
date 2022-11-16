@@ -21,7 +21,7 @@ var (
 func main() {
 	var err error
 
-	config.GoDotEnv, err = strconv.ParseBool(os.Getenv("GO_DOT_ENV"))
+	config.GoDotEnv, err = strconv.ParseBool(os.Getenv("GODOTENV"))
 	if err != nil {
 		fmt.Printf("can't load env variable. Trying godotenv next. err: %v\n", err)
 		config.GoDotEnv = true
