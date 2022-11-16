@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strconv"
 	"time"
 
 	"github.com/getsentry/sentry-go"
@@ -12,31 +13,40 @@ import (
 	"github.com/richard-on/website/pkg/logger"
 )
 
+var (
+	version string
+	build   string
+)
+
 func main() {
+	var err error
 
-	if len(os.Args) > 1 {
-		if os.Args[1] == "win-dev" {
-			config.Env = "win-dev"
+	config.GoDotEnv, err = strconv.ParseBool(os.Getenv("GO_DOT_ENV"))
+	if err != nil {
+		fmt.Printf("can't load env variable. Trying godotenv next. err: %v\n", err)
+		config.GoDotEnv = true
+	}
 
-			err := godotenv.Load()
-			if err != nil {
-				_ = fmt.Errorf("abort. Cannot load env variables. err: %v", err)
-				panic(err)
-			}
+	if config.GoDotEnv {
+		err = godotenv.Load()
+		if err != nil {
+			_ = fmt.Errorf("abort. Cannot load env variables using godotenv. err: %v", err)
+			panic(err)
 		}
 	}
 
 	config.Init()
 
-	log := logger.NewLogger(logger.DefaultWriter(),
+	log := logger.NewLogger(logger.DefaultWriter,
 		config.LogLevel,
 		"website-setup")
 
-	log.Info("env setup complete")
+	log.Info("env and logger setup complete")
+	log.Infof("richardhere.dev - version: %v; build: %v", version, build)
 
-	err := sentry.Init(sentry.ClientOptions{
+	err = sentry.Init(sentry.ClientOptions{
 		Dsn:              config.SentryDSN,
-		TracesSampleRate: 1.0,
+		TracesSampleRate: config.SentryTSR,
 	})
 	if err != nil {
 		log.Fatal(err, "sentry init failed")

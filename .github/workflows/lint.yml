@@ -1,21 +1,52 @@
-name: Lint
+name: CD
 
 on: [push]
 
 jobs:
-  lint:
-    name: Lint
+  dchr:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Go
-        uses: actions/setup-go@v3
-        with:
-          go-version: 1.19
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
 
-      - name: Checkout code
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push the Docker image
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: |
+            ghcr.io/richard-on/website:latest
+            ghcr.io/richard-on/website:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set the Kubernetes context
+        uses: azure/k8s-set-context@v2
+        with:
+          method: service-account
+          k8s-url: https://38.242.149.115:16443
+          k8s-secret: ${{ secrets.KUBERNETES_SECRET }}
+
+      - name: Checkout source code
         uses: actions/checkout@v3
 
-      - name: GolangCI Lint
-        uses: golangci/golangci-lint-action@v3
+      - name: Deploy to the Kubernetes cluster
+        uses: azure/k8s-deploy@v1
         with:
-          version: latest
+          namespace: default
+          manifests: |
+            kubernetes/deployment.yaml
+            kubernetes/ingress.yaml
+            kubernetes/service.yaml
+        images: |
+          ghcr.io/richard-on/website:latest

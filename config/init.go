@@ -1,34 +1,46 @@
 package config
 
 import (
-	"fmt"
 	"github.com/rs/zerolog"
 	"os"
+	"strconv"
 )
 
-var Version string
-var Build string
 var Env string
-var LogLevelRaw string
+var Deploy string
+var GoDotEnv bool
+var Log string
+var LogCW bool
+var LogFile string
 var LogLevel zerolog.Level
+var FiberPrefork bool
 var SentryDSN string
+var SentryTSR float64
 
 func Init() {
 	var err error
 
-	Version = os.Getenv("VERSION")
-	Build = os.Getenv("BUILD")
 	Env = os.Getenv("ENV")
-	SentryDSN = os.Getenv("SENTRY_DSN")
-	LogLevelRaw = os.Getenv("LOG_LEVEL")
-	if LogLevelRaw == "" {
-		_ = fmt.Errorf("abort: env variables are empty")
-		panic(err)
-	}
 
-	LogLevel, err = zerolog.ParseLevel(LogLevelRaw)
+	Deploy = os.Getenv("DEPLOY")
+
+	GoDotEnv, err = strconv.ParseBool(os.Getenv("GO_DOT_ENV"))
+
+	Log = os.Getenv("LOG")
+
+	LogCW, err = strconv.ParseBool(os.Getenv("LOG_CW"))
+
+	LogFile = os.Getenv("LOG_FILE")
+
+	LogLevel, err = zerolog.ParseLevel(os.Getenv("LOG_LEVEL"))
+
+	FiberPrefork, err = strconv.ParseBool(os.Getenv("FIBER_PREFORK"))
+
+	SentryDSN = os.Getenv("SENTRY_DSN")
+
+	SentryTSR, err = strconv.ParseFloat(os.Getenv("SENTRY_TSR"), 64)
+
 	if err != nil {
-		_ = fmt.Errorf("abort. Cannot parse log level. err: %v", err)
 		panic(err)
 	}
 }

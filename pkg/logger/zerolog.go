@@ -15,27 +15,34 @@ type Logger struct {
 	log zerolog.Logger
 }
 
-var PrettyPrint = zerolog.ConsoleWriter{Out: os.Stdout, TimeFormat: time.RFC1123}
+var DefaultWriter = NewWriter()
 
-func DefaultWriter() io.Writer {
-	switch config.Env {
-	case "win-dev":
-		return PrettyPrint
+func NewWriter() io.Writer {
 
-	case "linux-dev":
-		return os.Stdout
+	var out io.Writer
 
-	case "linux-dev-file":
-		logFile, err := os.Create("logs/website.log")
+	switch config.Log {
+	case "stdout":
+		out = os.Stdout
+	case "stderr":
+		out = os.Stderr
+	case "file":
+		file, err := os.OpenFile("logs/"+config.LogFile, os.O_RDWR|os.O_CREATE, 0666)
 		if err != nil {
-			sentry.CaptureException(err)
-			return os.Stdout
+			panic(err)
 		}
-		return logFile
+
+		out = file
 
 	default:
-		return os.Stdout
+		out = os.Stdout
 	}
+
+	if config.LogCW {
+		return zerolog.ConsoleWriter{Out: out, TimeFormat: time.RFC1123}
+	}
+
+	return out
 }
 
 func NewLogger(out io.Writer, level zerolog.Level, service string) Logger {

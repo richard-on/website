@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: website
+  template:
+    metadata:
+      labels:
+        app: website
+    spec:
+      containers:
+        - name: website
+          image: ghcr.io/richard-on/website:latest
+          ports:
+            - containerPort: 80
+            - containerPort: 443
+          env:
+            - name: ENV
+              value: "dev"
+            - name: VERSION
+              value: "0.0.1"
+            - name: DEPLOY
+              value: "docker"
+            - name: GODOTENV
+              value: "0"
+            - name: LOG
+              value: "stdout"
+            - name: LOG_FILE
+              value: "website.log"
+            - name: LOG_LEVEL
+              value: "trace"
+            - name: FIBER_PREFORK
+              value: "0"
+            - name: SENTRY_DSN
+              value: "https://2e8c6894de9047eeada54ca308mkb97b19@o1292241.ingest.sentry.io/4504126252646400"
+            - name: SENTRY_TSR
+              value: "1"
+      imagePullSecrets:
+        - name: github-container-registry
