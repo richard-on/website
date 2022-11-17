@@ -2,13 +2,14 @@ package logger
 
 import (
 	"fmt"
-	"github.com/getsentry/sentry-go"
-	"github.com/richard-on/website/config"
 	"io"
 	"os"
 	"time"
 
+	"github.com/getsentry/sentry-go"
 	"github.com/rs/zerolog"
+
+	"github.com/richard-on/website/config"
 )
 
 type Logger struct {
