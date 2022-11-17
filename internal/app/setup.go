@@ -9,7 +9,6 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/pprof"
 	"github.com/gofiber/fiber/v2/middleware/recover"
-	"github.com/gofiber/template/html"
 	"github.com/richard-on/website/config"
 	"github.com/richard-on/website/pkg/logger"
 )
@@ -24,13 +23,10 @@ func NewApp() App {
 		config.LogLevel,
 		"website-app")
 
-	engine := html.New("./static", ".html")
-
 	app := fiber.New(fiber.Config{
 		Prefork:       config.FiberPrefork,
 		ServerHeader:  "richardhere.dev",
 		CaseSensitive: false,
-		Views:         engine,
 		ReadTimeout:   time.Second * 30,
 		ErrorHandler: func(ctx *fiber.Ctx, err error) error {
 
@@ -64,7 +60,7 @@ func NewApp() App {
 		),
 	)
 
-	app.Static("/", "./static")
+	app.Static("/", "./public")
 
 	return App{
 		app: app,
