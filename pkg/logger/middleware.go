@@ -51,7 +51,10 @@ func Middleware(logger Logger, filter func(ctx *fiber.Ctx) bool) fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
 
 		if filter != nil && filter(ctx) {
-			ctx.Next()
+			err := ctx.Next()
+			if err != nil {
+				return err
+			}
 			return nil
 		}
 
@@ -86,9 +89,12 @@ func Middleware(logger Logger, filter func(ctx *fiber.Ctx) bool) fiber.Handler {
 				event.Stack = debug.Stack()
 
 				ctx.Status(fiber.StatusInternalServerError)
-				ctx.JSON(map[string]interface{}{
+				err = ctx.JSON(map[string]interface{}{
 					"status": http.StatusText(fiber.StatusInternalServerError),
 				})
+				if err != nil {
+					panic(err)
+				}
 			}
 
 			event.StatusCode = ctx.Response().StatusCode()

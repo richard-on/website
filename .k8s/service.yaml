@@ -5,7 +5,6 @@ metadata:
     app: website
   name: website
 spec:
-  externalTrafficPolicy: Local
   internalTrafficPolicy: Local
   ports:
     - name: "http"
