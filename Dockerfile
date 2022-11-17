@@ -17,7 +17,7 @@ WORKDIR /website
 COPY --from=builder /website/run /website/run
 # COPY --from=builder /website/.env /website/.env
 # COPY --from=builder /website/etc /website/etc
-COPY --from=builder /website/static /website/static
+COPY --from=builder /website/public /website/public
 
 EXPOSE 80
 
