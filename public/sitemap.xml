@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://richardhere.dev/categories/</loc>
+  </url><url>
+    <loc>https://richardhere.dev/tags/go/</loc>
+  </url><url>
+    <loc>https://richardhere.dev/tags/hugo/</loc>
+  </url><url>
+    <loc>https://richardhere.dev/tags/kubernetes/</loc>
+  </url><url>
+    <loc>https://richardhere.dev/projects/</loc>
+  </url><url>
+    <loc>https://richardhere.dev/</loc>
+  </url><url>
+    <loc>https://richardhere.dev/tags/</loc>
+  </url><url>
+    <loc>https://richardhere.dev/projects/website/</loc>
+  </url><url>
+    <loc>https://richardhere.dev/tags/website/</loc>
+  </url>
+</urlset>

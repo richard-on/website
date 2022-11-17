@@ -31,9 +31,9 @@ spec:
             - containerPort: 80
           env:
             - name: ENV
-              value: "dev"
+              value: "production"
             - name: VERSION
-              value: "0.0.1"
+              value: "0.1.0"
             - name: DEPLOY
               value: "docker"
             - name: GODOTENV
