@@ -8,7 +8,7 @@ spec:
   tls:
     - hosts:
         - richardhere.dev
-      secretName: richardhere-ssl
+      secretName: default/richardhere-ssl
   rules:
     - host: richardhere.dev
       http:
