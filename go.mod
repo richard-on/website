@@ -6,6 +6,7 @@ require (
 	github.com/ansrivas/fiberprometheus/v2 v2.4.1
 	github.com/getsentry/sentry-go v0.14.0
 	github.com/gofiber/fiber/v2 v2.39.0
+	github.com/gofiber/template v1.7.2
 	github.com/google/uuid v1.3.0
 	github.com/joho/godotenv v1.4.0
 	github.com/rs/zerolog v1.28.0
