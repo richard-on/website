@@ -2,7 +2,7 @@
 <h3 align=center>My portfolio website</h3>
 <br>
 
-![Website](https://img.shields.io/website?url=https%3A%2F%2Frichardhere.dev%2F)
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Frichardhere.dev%2F)](https://richardhere.dev/)
 [![Go Report Card](https://goreportcard.com/badge/github.com/richard-on/website)](https://goreportcard.com/report/github.com/richard-on/website)
 [![Lint](https://github.com/richard-on/website/actions/workflows/lint.yml/badge.svg)](https://github.com/richard-on/website/actions/workflows/lint.yml)
 [![Publish](https://github.com/richard-on/website/actions/workflows/publish.yml/badge.svg?branch=master)](https://github.com/richard-on/website/actions/workflows/publish.yml)
