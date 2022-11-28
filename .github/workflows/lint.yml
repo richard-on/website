@@ -1,11 +1,8 @@
-name: Lint, Build and Test
+name:
 
 on:
   push:
-    branches:
-      - master
-      - k8s
-    pull_request:
+  pull_request:
 
 jobs:
   lint:
@@ -61,35 +58,3 @@ jobs:
 
       - name: Test
         run: go test -race -v ./...
-
-  dockerBuild:
-    name: Build Docker image
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup Go
-        uses: actions/setup-go@v3
-        with:
-          go-version: 1.19
-
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Build and test Docker image
-        run: docker-compose up -d
-        healthcheck:
-          test: [ "CMD", "curl", "-f", "-k", "https://127.0.0.1/" ]
-          start_period: 10s
-          interval: 1m
-          timeout: 5s
-          retries: 10
-        env:
-          ENV: ${{ secrets.ENV }}
-          VERSION: ${{ secrets.VERSION }}
-          DEPLOY: ${{ secrets.DEPLOY }}
-          GODOTENV: ${{ secrets.GODOTENV }}
-          LOG: ${{ secrets.LOG }}
-          LOG_FILE: ${{ secrets.LOG_FILE }}
-          LOG_LEVEL: ${{ secrets.LOG_LEVEL }}
-          FIBER_PREFORK: ${{ secrets.FIBER_PREFORK }}
-          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
-          SENTRY_TSR: ${{ secrets.SENTRY_TSR }}
