@@ -22,7 +22,6 @@ services:
       - DEPLOY
       - GODOTENV
       - LOG
-      - LOG_FILE
       - LOG_LEVEL
       - FIBER_PREFORK
       - SENTRY_DSN
