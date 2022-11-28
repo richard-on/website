@@ -9,6 +9,7 @@ on:
     branches:
       - master
     tags:
+      - v1.*
       - v0.*
 
 jobs:

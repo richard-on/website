@@ -1,11 +1,14 @@
 name: Publish
 
 on:
-  push:
+  workflow_run:
+    workflows:
+      - Test
+    types:
+      - completed
     branches:
       - master
       - k8s
-  pull_request:
 
 jobs:
   dockerBuild:
