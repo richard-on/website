@@ -35,7 +35,7 @@ jobs:
           SENTRY_TSR: ${{ secrets.SENTRY_TSR }}
 
       - name: Healthcheck
-        run: [ "CMD", "curl", "-f", "-k", "https://127.0.0.1/" ]
+        run: "curl -f -k http://127.0.0.1/"
 
   publish:
     runs-on: ubuntu-latest
