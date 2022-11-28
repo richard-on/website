@@ -3,12 +3,11 @@ name: Publish
 on:
   workflow_run:
     workflows:
-      - Test
+      - Lint
     types:
       - completed
     branches:
       - master
-      - k8s
 
 jobs:
   dockerBuild:
@@ -36,10 +35,6 @@ jobs:
           FIBER_PREFORK: ${{ secrets.FIBER_PREFORK }}
           SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
           SENTRY_TSR: ${{ secrets.SENTRY_TSR }}
-
-      - name: Healthcheck
-        run: |
-          "docker run --network container:website appropriate/curl -s -4 --retry 10 --retry-connrefused http://127.0.0.1/"
 
   publish:
     needs: dockerBuild
