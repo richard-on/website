@@ -2,12 +2,12 @@ name: Deploy to Kubernetes
 
 on:
   workflow_run:
-    workflow:
+    workflows:
       - Publish
-    branches:
-      - master
     types:
       - completed
+    branches:
+      - master
     tags:
       - v0.*
 
