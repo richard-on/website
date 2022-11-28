@@ -15,7 +15,7 @@ on:
   push:
     branches:
       - master
-      - k8s
+      - release
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ master ]
