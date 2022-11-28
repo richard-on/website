@@ -36,7 +36,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build
-        run: go build -v -ldflags "-X main.version={{ secrets.version }} -X main.build=`date -u +.%Y%m%d.%H%M%S`" cmd/website/main.go
+        run: go build -o website -v -ldflags "-X main.version={{ secrets.version }} -X main.build=`date -u +.%Y%m%d.%H%M%S`" cmd/website/main.go
         env:
           GOOS: linux
           GOARCH: amd64
