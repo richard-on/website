@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - k8s
+  pull_request:
 
 jobs:
   publish:

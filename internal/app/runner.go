@@ -23,14 +23,6 @@ func (a *App) Run() {
 		<-quit
 	}()
 
-	/*if err := a.app.ListenTLS(
-		":443",
-		"etc/fullchain.pem",
-		"etc/privkey.pem",
-	); err != nil {
-		a.log.Fatalf(err, "error while listening tls")
-	}*/
-
 	if err := a.app.Listen(":80"); err != nil {
 		a.log.Fatalf(err, "error while listening at port 80")
 	}

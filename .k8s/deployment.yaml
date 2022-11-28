@@ -29,29 +29,9 @@ spec:
           name: website
           ports:
             - containerPort: 80
-          env:
-            - name: ENV
-              value: "production"
-            - name: VERSION
-              value: "0.1.0"
-            - name: DEPLOY
-              value: "docker"
-            - name: GODOTENV
-              value: "0"
-            - name: LOG
-              value: "stdout"
-            - name: LOG_FILE
-              value: "website.log"
-            - name: LOG_LEVEL
-              value: "trace"
-            - name: FIBER_PREFORK
-              value: "0"
-            - name: SENTRY_DSN
-              value: "https://2e8c6894de9047eeada54ca308mkb97b19@o1292241.ingest.sentry.io/4504126252646400"
-            - name: SENTRY_TSR
-              value: "1"
-          resources: {}
+          envFrom:
+            - configMapRef:
+                name: website-config
       restartPolicy: Always
       imagePullSecrets:
         - name: github-container-registry
-status: {}

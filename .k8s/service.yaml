@@ -5,7 +5,6 @@ metadata:
     app: website
   name: website
 spec:
-  internalTrafficPolicy: Local
   ports:
     - name: "http"
       port: 80

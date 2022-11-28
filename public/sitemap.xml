@@ -4,6 +4,8 @@
   <url>
     <loc>https://richardhere.dev/categories/</loc>
   </url><url>
+    <loc>https://richardhere.dev/tags/fiber/</loc>
+  </url><url>
     <loc>https://richardhere.dev/tags/go/</loc>
   </url><url>
     <loc>https://richardhere.dev/tags/hugo/</loc>
@@ -14,10 +16,8 @@
   </url><url>
     <loc>https://richardhere.dev/</loc>
   </url><url>
-    <loc>https://richardhere.dev/tags/</loc>
-  </url><url>
     <loc>https://richardhere.dev/projects/website/</loc>
   </url><url>
-    <loc>https://richardhere.dev/tags/website/</loc>
+    <loc>https://richardhere.dev/tags/</loc>
   </url>
 </urlset>

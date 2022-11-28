@@ -17,30 +17,43 @@ var FiberPrefork bool
 var SentryDSN string
 var SentryTSR float64
 
-func Init() {
+func Init() error {
 	var err error
 
 	Env = os.Getenv("ENV")
 
 	Deploy = os.Getenv("DEPLOY")
 
-	GoDotEnv, err = strconv.ParseBool(os.Getenv("GO_DOT_ENV"))
+	GoDotEnv, err = strconv.ParseBool(os.Getenv("GODOTENV"))
+	if err != nil {
+		return err
+	}
 
 	Log = os.Getenv("LOG")
 
 	LogCW, err = strconv.ParseBool(os.Getenv("LOG_CW"))
+	if err != nil {
+		return err
+	}
 
 	LogFile = os.Getenv("LOG_FILE")
 
 	LogLevel, err = zerolog.ParseLevel(os.Getenv("LOG_LEVEL"))
+	if err != nil {
+		return err
+	}
 
 	FiberPrefork, err = strconv.ParseBool(os.Getenv("FIBER_PREFORK"))
+	if err != nil {
+		return err
+	}
 
 	SentryDSN = os.Getenv("SENTRY_DSN")
 
 	SentryTSR, err = strconv.ParseFloat(os.Getenv("SENTRY_TSR"), 64)
-
 	if err != nil {
-		panic(err)
+		return err
 	}
+
+	return nil
 }

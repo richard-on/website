@@ -4,11 +4,13 @@ metadata:
   labels:
     app: website
   name: website
+  annotations:
+    cert-manager.io/cluster-issuer: lets-encrypt
 spec:
   tls:
     - hosts:
         - richardhere.dev
-      secretName: default/richardhere-ssl
+      secretName: certman-richardhere
   rules:
     - host: richardhere.dev
       http:

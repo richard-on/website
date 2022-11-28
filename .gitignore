@@ -1,5 +1,8 @@
 ### Go ###
 
+# configMap for k8s deployment
+/.k8s/configmap.yaml
+
 # etc directory
 /etc/
 

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app: website-config
+  name: website-config
+data:
+  ENV: "production"
+  VERSION: "0.1.1"
+  DEPLOY: "docker"
+  GODOTENV: "0"
+  LOG: "stdout"
+  LOG_LEVEL: "trace"
+  FIBER_PREFORK: "0"
+  SENTRY_DSN: "https://2e8c6894de9047eeada54ca308mkb97b19@o1292241.ingest.sentry.io/4504126252646400"
+  SENTRY_TSR: "0.5"
