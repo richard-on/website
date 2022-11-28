@@ -18,6 +18,7 @@ type fiberLog struct {
 	Method     string
 	Path       string
 	Protocol   string
+	UserAgent  string
 	StatusCode int
 	Latency    float64
 	Error      error
@@ -32,6 +33,7 @@ func (f *fiberLog) MarshalZerologObject(e *zerolog.Event) {
 		Str("method", f.Method).
 		Str("path", f.Path).
 		Str("protocol", f.Protocol).
+		Str("user-agent", f.UserAgent).
 		Int("status_code", f.StatusCode).
 		Float64("latency", f.Latency).
 		Str("tag", "request")
@@ -49,7 +51,10 @@ func Middleware(logger Logger, filter func(ctx *fiber.Ctx) bool) fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
 
 		if filter != nil && filter(ctx) {
-			ctx.Next()
+			err := ctx.Next()
+			if err != nil {
+				return err
+			}
 			return nil
 		}
 
@@ -62,12 +67,13 @@ func Middleware(logger Logger, filter func(ctx *fiber.Ctx) bool) fiber.Handler {
 		}
 
 		event := &fiberLog{
-			RID:      rid,
-			RemoteIP: ctx.IP(),
-			Host:     ctx.Hostname(),
-			Method:   ctx.Method(),
-			Path:     ctx.Path(),
-			Protocol: ctx.Protocol(),
+			RID:       rid,
+			RemoteIP:  ctx.IP(),
+			Host:      ctx.Hostname(),
+			Method:    ctx.Method(),
+			Path:      ctx.Path(),
+			Protocol:  ctx.Protocol(),
+			UserAgent: ctx.Get(fiber.HeaderUserAgent),
 		}
 
 		defer func() {
@@ -83,9 +89,12 @@ func Middleware(logger Logger, filter func(ctx *fiber.Ctx) bool) fiber.Handler {
 				event.Stack = debug.Stack()
 
 				ctx.Status(fiber.StatusInternalServerError)
-				ctx.JSON(map[string]interface{}{
+				err = ctx.JSON(map[string]interface{}{
 					"status": http.StatusText(fiber.StatusInternalServerError),
 				})
+				if err != nil {
+					panic(err)
+				}
 			}
 
 			event.StatusCode = ctx.Response().StatusCode()

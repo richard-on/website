@@ -93,4 +93,7 @@ fabric.properties
 .idea/httpRequests
 
 # Ignores the whole .idea folder and all .iml files
-.idea/
+.idea/!/.k8s/configmap.yaml
+!/.k8s/configmap.yaml
+!/.k8s/configmap.yaml
+!/.k8s/configmap.yaml

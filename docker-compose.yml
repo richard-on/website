@@ -1,23 +1,29 @@
-version: "3.9"
+version: "3.8"
 services:
 
   website:
     build:
       dockerfile: Dockerfile
       context: .
-    image: richardhere/website
+    image: ghcr.io/richard-on/website:latest
+    container_name: website
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD", "curl", "-f", "https://127.0.0.1/" ]
-      interval: "1m"
-      timeout: "10s"
+      test: [ "CMD", "curl", "-f", "-k", "https://127.0.0.1/" ]
+      start_period: 10s
+      interval: 1m
+      timeout: 5s
       retries: 10
     ports:
       - "80:80"
-      - "443:443"
     environment:
-      - VERSION
-      - BUILD
       - ENV
+      - VERSION
+      - DEPLOY
+      - GODOTENV
+      - LOG
+      - LOG_FILE
       - LOG_LEVEL
+      - FIBER_PREFORK
       - SENTRY_DSN
+      - SENTRY_TSR

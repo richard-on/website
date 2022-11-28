@@ -1,0 +1,40 @@
+name: Deploy to Kubernetes
+
+on:
+  workflow_run:
+    workflows:
+      - Publish
+    types:
+      - completed
+    branches:
+      - master
+    tags:
+      - v1.*
+      - v0.*
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: [ "publish" ]
+    steps:
+      - name: Set the Kubernetes context
+        uses: azure/k8s-set-context@v2
+        with:
+          method: service-account
+          k8s-url: ${{ secrets.KUBERNETES_URL }}
+          k8s-secret: ${{ secrets.KUBERNETES_SECRET }}
+
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Deploy to the Kubernetes cluster
+        uses: azure/k8s-deploy@v4
+        with:
+          namespace: website
+          manifests: |
+            .k8s/deployment.yaml
+            .k8s/service.yaml
+            .k8s/ingress.yaml
+          images: |
+            ghcr.io/richard-on/website:latest

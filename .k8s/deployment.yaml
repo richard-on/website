@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: website
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: website
+    spec:
+      containers:
+        - image: ghcr.io/richard-on/website:latest
+          livenessProbe:
+            exec:
+              command:
+                - curl
+                - -f
+                - -k
+                - http://127.0.0.1/
+            initialDelaySeconds: 120
+            failureThreshold: 10
+            periodSeconds: 60
+            timeoutSeconds: 5
+          name: website
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: website-config
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: github-container-registry
