@@ -35,7 +35,10 @@ func main() {
 		}
 	}
 
-	config.Init()
+	err = config.Init()
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	log := logger.NewLogger(logger.DefaultWriter,
 		config.LogLevel,

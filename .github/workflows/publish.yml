@@ -35,9 +35,11 @@ jobs:
           SENTRY_TSR: ${{ secrets.SENTRY_TSR }}
 
       - name: Healthcheck
-        run: "curl -f -k http://127.0.0.1/"
+        run: |
+          "docker run --network container:website appropriate/curl -s -4 --retry 10 --retry-connrefused http://127.0.0.1/"
 
   publish:
+    needs: dockerBuild
     runs-on: ubuntu-latest
     steps:
       - name: Set up Docker Buildx

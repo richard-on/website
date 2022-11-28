@@ -24,6 +24,7 @@ jobs:
 
   build:
     name: Build
+    if: always()
     runs-on: ubuntu-latest
     steps:
       - name: Setup Go
@@ -36,7 +37,7 @@ jobs:
 
       - name: Build
         run: go build -v -ldflags "-X main.version={{ secrets.version }} -X main.build=`date -u +.%Y%m%d.%H%M%S`" \
-          -o website cmd/website/main.go
+          cmd/website/main.go
         env:
           GOOS: linux
           GOARCH: amd64
