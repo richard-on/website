@@ -24,5 +24,6 @@ services:
       - LOG
       - LOG_LEVEL
       - FIBER_PREFORK
+      - MAX_CPU
       - SENTRY_DSN
       - SENTRY_TSR
