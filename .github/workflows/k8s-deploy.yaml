@@ -8,9 +8,6 @@ on:
       - completed
     branches:
       - release
-    tags:
-      - v1.*
-      - v0.*
 
 jobs:
   deployKubernetes:
