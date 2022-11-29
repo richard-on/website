@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"github.com/gofiber/fiber/v2"
 	"os"
+	"runtime"
 	"strconv"
 	"time"
 
@@ -40,12 +42,16 @@ func main() {
 		fmt.Println(err)
 	}
 
+	runtime.GOMAXPROCS(config.MaxCPU)
+
 	log := logger.NewLogger(logger.DefaultWriter,
 		config.LogLevel,
 		"website-setup")
 
-	log.Info("env and logger setup complete")
-	log.Infof("richardhere.dev - version: %v; build: %v", version, build)
+	if !fiber.IsChild() {
+		log.Info("env and logger setup complete")
+		log.Infof("richardhere.dev - version: %v; build: %v", version, build)
+	}
 
 	err = sentry.Init(sentry.ClientOptions{
 		Dsn:              config.SentryDSN,
@@ -56,7 +62,9 @@ func main() {
 	}
 	defer sentry.Flush(2 * time.Second)
 
-	log.Info("sentry setup complete")
+	if !fiber.IsChild() {
+		log.Info("sentry setup complete")
+	}
 
 	server := app.NewApp()
 	server.Run()

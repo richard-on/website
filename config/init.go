@@ -14,6 +14,7 @@ var LogCW bool
 var LogFile string
 var LogLevel zerolog.Level
 var FiberPrefork bool
+var MaxCPU int
 var SentryDSN string
 var SentryTSR float64
 
@@ -44,6 +45,11 @@ func Init() error {
 	}
 
 	FiberPrefork, err = strconv.ParseBool(os.Getenv("FIBER_PREFORK"))
+	if err != nil {
+		return err
+	}
+
+	MaxCPU, err = strconv.Atoi(os.Getenv("MAX_CPU"))
 	if err != nil {
 		return err
 	}
