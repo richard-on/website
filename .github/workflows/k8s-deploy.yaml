@@ -6,8 +6,6 @@ on:
       - Publish
     types:
       - completed
-    branches:
-      - release
 
 jobs:
   deployKubernetes:
