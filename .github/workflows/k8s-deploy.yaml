@@ -7,10 +7,7 @@ on:
     types:
       - completed
     branches:
-      - release
-    tags:
-      - v1.*
-      - v0.*
+      - releaseRe
 
 jobs:
   deployKubernetes:
