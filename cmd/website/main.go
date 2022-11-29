@@ -50,7 +50,7 @@ func main() {
 
 	if !fiber.IsChild() {
 		log.Info("env and logger setup complete")
-		log.Infof("richardhere.dev - version: %v; build: %v", version, build)
+		log.Infof("richardhere.dev - version: %v; build: %v; FiberPrefork: %v", version, build, config.FiberPrefork)
 	}
 
 	err = sentry.Init(sentry.ClientOptions{
