@@ -37,10 +37,7 @@ func main() {
 		}
 	}
 
-	err = config.Init()
-	if err != nil {
-		fmt.Println(err)
-	}
+	config.Init()
 
 	runtime.GOMAXPROCS(config.MaxCPU)
 
