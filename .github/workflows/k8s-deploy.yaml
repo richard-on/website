@@ -32,3 +32,6 @@ jobs:
             .k8s/ingress.yaml
           images: |
             ghcr.io/richard-on/website:latest
+          strategy: canary
+          action: deploy
+          percentage: 50
