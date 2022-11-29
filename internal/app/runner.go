@@ -17,10 +17,10 @@ func (a *App) Run() {
 		}
 	}()
 
+	<-quit
+
 	err := a.app.Shutdown()
 	if err != nil {
 		a.log.Fatalf(err, "could not shutdown server")
 	}
-
-	<-quit
 }
