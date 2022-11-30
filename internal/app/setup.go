@@ -58,10 +58,10 @@ func NewApp() App {
 		recover.New(),
 		pprof.New(
 			pprof.Config{Next: func(c *fiber.Ctx) bool {
-				if config.Env == "dev" {
-					return false
+				if config.Env != "dev" {
+					return true
 				}
-				return true
+				return false
 			}}),
 		prometheus.Middleware,
 		logger.Middleware(
