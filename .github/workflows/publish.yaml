@@ -1,16 +1,18 @@
 name: Publish
 
 on:
-  workflow_run:
-    workflows:
-      - Lint
-    types:
-      - completed
+  push:
     tags:
       - v0.*
       - v1.*
 
 jobs:
+  lint:
+    uses: benc-uk/workflow-dispatch@v1
+    with:
+      workflow: Lint
+      repo: richard-on/website
+
   dockerBuild:
     name: Build Docker image
     runs-on: ubuntu-latest
