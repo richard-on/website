@@ -8,10 +8,13 @@ on:
 
 jobs:
   lint:
-    uses: benc-uk/workflow-dispatch@v1
-    with:
-      workflow: Lint
-      repo: richard-on/website
+    name: Lint
+    steps:
+      - name: Workflow Dispatch
+        uses: benc-uk/workflow-dispatch@v1.2.2
+        with:
+          workflow: Lint
+          repo: richard-on/website
 
   dockerBuild:
     name: Build Docker image
