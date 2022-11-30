@@ -4,49 +4,28 @@ import (
 	"fmt"
 	"io"
 	"os"
-	"time"
 
 	"github.com/getsentry/sentry-go"
 	"github.com/rs/zerolog"
-
-	"github.com/richard-on/website/config"
 )
 
 type Logger struct {
 	log zerolog.Logger
 }
 
-var DefaultWriter = NewWriter()
-
-func NewWriter() io.Writer {
-
-	var out io.Writer
-
-	switch config.Log {
-	case "stdout":
-		out = os.Stdout
-	case "stderr":
-		out = os.Stderr
-	case "file":
-		file, err := os.OpenFile("logs/"+config.LogFile, os.O_RDWR|os.O_CREATE, 0666)
-		if err != nil {
-			panic(err)
-		}
-
-		out = file
-
-	default:
-		out = os.Stdout
-	}
-
-	if config.LogCW {
-		return zerolog.ConsoleWriter{Out: out, TimeFormat: time.RFC1123}
-	}
-
-	return out
-}
-
 func NewLogger(out io.Writer, level zerolog.Level, service string) Logger {
+
+	if level <= zerolog.DebugLevel {
+		return Logger{log: zerolog.New(out).
+			Level(level).
+			With().
+			CallerWithSkipFrameCount(3).
+			Timestamp().
+			Int("pid", os.Getpid()).
+			Str("service", service).
+			Logger(),
+		}
+	}
 
 	return Logger{log: zerolog.New(out).
 		Level(level).

@@ -23,4 +23,5 @@ func (a *App) Run() {
 	if err != nil {
 		a.log.Fatalf(err, "could not shutdown server")
 	}
+	a.log.Info("server shutdown success")
 }

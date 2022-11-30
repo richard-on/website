@@ -1,7 +1,6 @@
 package app
 
 import (
-	"github.com/gofiber/template/html"
 	"strconv"
 	"time"
 
@@ -10,6 +9,8 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/pprof"
 	"github.com/gofiber/fiber/v2/middleware/recover"
+	"github.com/gofiber/template/html"
+
 	"github.com/richard-on/website/config"
 	"github.com/richard-on/website/pkg/logger"
 )
@@ -20,7 +21,7 @@ type App struct {
 }
 
 func NewApp() App {
-	log := logger.NewLogger(logger.DefaultWriter,
+	log := logger.NewLogger(config.DefaultWriter,
 		config.LogLevel,
 		"website-app")
 
@@ -55,10 +56,13 @@ func NewApp() App {
 	app.Use(
 		cors.New(cors.ConfigDefault),
 		recover.New(),
-		pprof.New(),
+		pprof.New(
+			pprof.Config{Next: func(c *fiber.Ctx) bool {
+				return config.Env != "dev"
+			}}),
 		prometheus.Middleware,
 		logger.Middleware(
-			logger.NewLogger(logger.DefaultWriter,
+			logger.NewLogger(config.DefaultWriter,
 				config.LogLevel,
 				"website-server"), nil,
 		),
