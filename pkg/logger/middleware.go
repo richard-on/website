@@ -32,10 +32,10 @@ func (f *fiberLog) MarshalZerologObject(e *zerolog.Event) {
 		Str("host", f.Host).
 		Str("method", f.Method).
 		Str("path", f.Path).
-		Str("protocol", f.Protocol).
-		Str("user-agent", f.UserAgent).
 		Int("status_code", f.StatusCode).
 		Float64("latency", f.Latency).
+		Str("protocol", f.Protocol).
+		Str("user-agent", f.UserAgent).
 		Str("tag", "request")
 
 	if f.Error != nil {
@@ -98,7 +98,7 @@ func Middleware(logger Logger, filter func(ctx *fiber.Ctx) bool) fiber.Handler {
 			}
 
 			event.StatusCode = ctx.Response().StatusCode()
-			event.Latency = time.Since(start).Seconds()
+			event.Latency = float64(time.Since(start).Milliseconds())
 
 			switch {
 			case rec != nil:

@@ -6,8 +6,9 @@ on:
       - Lint
     types:
       - completed
-    branches:
-      - release
+    tags:
+      - v0.*
+      - v1.*
 
 jobs:
   dockerBuild:

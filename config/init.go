@@ -1,10 +1,12 @@
 package config
 
 import (
-	"fmt"
-	"github.com/rs/zerolog"
 	"os"
 	"strconv"
+
+	"github.com/rs/zerolog"
+
+	"github.com/richard-on/website/pkg/logger"
 )
 
 var Env string
@@ -19,7 +21,7 @@ var MaxCPU int
 var SentryDSN string
 var SentryTSR float64
 
-func Init() {
+func Init(log logger.Logger) {
 	var err error
 
 	Env = os.Getenv("ENV")
@@ -28,37 +30,37 @@ func Init() {
 
 	GoDotEnv, err = strconv.ParseBool(os.Getenv("GODOTENV"))
 	if err != nil {
-		fmt.Printf("GODOTENV init: %v", err)
+		log.Infof("GODOTENV init: %v", err)
 	}
 
 	Log = os.Getenv("LOG")
 
 	LogCW, err = strconv.ParseBool(os.Getenv("LOG_CW"))
 	if err != nil {
-		fmt.Printf("LOG_CW init: %v", err)
+		log.Infof("LOG_CW init: %v", err)
 	}
 
 	LogFile = os.Getenv("LOG_FILE")
 
 	LogLevel, err = zerolog.ParseLevel(os.Getenv("LOG_LEVEL"))
 	if err != nil {
-		fmt.Printf("LOG_LEVEL init: %v", err)
+		log.Infof("LOG_LEVEL init: %v", err)
 	}
 
 	FiberPrefork, err = strconv.ParseBool(os.Getenv("FIBER_PREFORK"))
 	if err != nil {
-		fmt.Printf("FIBER_PREFORK init: %v", err)
+		log.Infof("FIBER_PREFORK init: %v", err)
 	}
 
 	MaxCPU, err = strconv.Atoi(os.Getenv("MAX_CPU"))
 	if err != nil {
-		fmt.Printf("MAX_CPU init: %v", err)
+		log.Infof("MAX_CPU init: %v", err)
 	}
 
 	SentryDSN = os.Getenv("SENTRY_DSN")
 
 	SentryTSR, err = strconv.ParseFloat(os.Getenv("SENTRY_TSR"), 64)
 	if err != nil {
-		fmt.Printf("SENTRY_TSR init: %v", err)
+		log.Infof("SENTRY_TSR init: %v", err)
 	}
 }

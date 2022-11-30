@@ -37,6 +37,7 @@ jobs:
             .k8s/deployment.yaml
             .k8s/service.yaml
             .k8s/ingress.yaml
+            .k8s/hpa.yaml
           images: |
             ghcr.io/richard-on/website:latest
           action: deploy

@@ -32,6 +32,13 @@ spec:
           envFrom:
             - configMapRef:
                 name: website-config
+          resources:
+            limits:
+              cpu: 200m
+              memory: 60Mi
+            requests:
+              cpu: 100m
+              memory: 30Mi
       restartPolicy: Always
       imagePullSecrets:
         - name: github-container-registry
