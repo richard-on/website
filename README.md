@@ -4,8 +4,8 @@
 
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Frichardhere.dev%2F)](https://richardhere.dev/)
 [![Go Report Card](https://goreportcard.com/badge/github.com/richard-on/website)](https://goreportcard.com/report/github.com/richard-on/website)
-[![Lint](https://github.com/richard-on/website/actions/workflows/lint.yml/badge.svg)](https://github.com/richard-on/website/actions/workflows/lint.yml)
-[![Publish](https://github.com/richard-on/website/actions/workflows/publish.yml/badge.svg?branch=master)](https://github.com/richard-on/website/actions/workflows/publish.yml)
+[![Lint](https://github.com/richard-on/website/actions/workflows/lint.yaml/badge.svg)](https://github.com/richard-on/website/actions/workflows/lint.yaml)
+[![Publish](https://github.com/richard-on/website/actions/workflows/publish.yaml/badge.svg)](https://github.com/richard-on/website/actions/workflows/publish.yaml)
 [![Deploy to Kubernetes](https://github.com/richard-on/website/actions/workflows/k8s-deploy.yaml/badge.svg?branch=master)](https://github.com/richard-on/website/actions/workflows/k8s-deploy.yaml)
 
 ---
