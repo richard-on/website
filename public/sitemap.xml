@@ -2,22 +2,107 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://richardhere.dev/categories/</loc>
+    <loc>https://richardhere.dev/tags/efk/</loc>
+    <lastmod>2022-10-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://richardhere.dev/tags/fiber/</loc>
+    <lastmod>2022-10-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://richardhere.dev/tags/go/</loc>
+    <lastmod>2022-10-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://richardhere.dev/tags/hugo/</loc>
+    <loc>https://richardhere.dev/tags/grpc/</loc>
+    <lastmod>2022-10-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://richardhere.dev/tags/jwt/</loc>
+    <lastmod>2022-10-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://richardhere.dev/tags/kubernetes/</loc>
+    <lastmod>2022-10-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://richardhere.dev/projects/mcs/</loc>
+    <lastmod>2022-10-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://richardhere.dev/tags/mongodb/</loc>
+    <lastmod>2022-10-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://richardhere.dev/tags/postgresql/</loc>
+    <lastmod>2022-10-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://richardhere.dev/projects/</loc>
+    <lastmod>2022-10-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://richardhere.dev/</loc>
+    <lastmod>2022-10-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://richardhere.dev/projects/website/</loc>
+    <loc>https://richardhere.dev/tags/swagger/</loc>
+    <lastmod>2022-10-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://richardhere.dev/tags/</loc>
+    <lastmod>2022-10-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://richardhere.dev/tags/zerolog/</loc>
+    <lastmod>2022-10-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://richardhere.dev/tags/hugo/</loc>
+    <lastmod>2022-10-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://richardhere.dev/projects/website/</loc>
+    <lastmod>2022-10-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://richardhere.dev/tags/docker/</loc>
+    <lastmod>2022-05-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://richardhere.dev/tags/mysql/</loc>
+    <lastmod>2022-05-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://richardhere.dev/tags/telegram-api/</loc>
+    <lastmod>2022-05-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://richardhere.dev/projects/tgbot/</loc>
+    <lastmod>2022-05-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://richardhere.dev/projects/cryptosys/</loc>
+    <lastmod>2022-02-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://richardhere.dev/tags/css3/</loc>
+    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://richardhere.dev/tags/html5/</loc>
+    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://richardhere.dev/projects/insight/</loc>
+    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://richardhere.dev/tags/javascript/</loc>
+    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://richardhere.dev/tags/php/</loc>
+    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://richardhere.dev/tags/woocommerce/</loc>
+    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://richardhere.dev/tags/wordpress/</loc>
+    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://richardhere.dev/projects/buildthefamcs/</loc>
+    <lastmod>2021-05-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://richardhere.dev/tags/c#/</loc>
+    <lastmod>2021-05-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://richardhere.dev/tags/unity/</loc>
+    <lastmod>2021-05-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://richardhere.dev/tags/android/</loc>
+  </url><url>
+    <loc>https://richardhere.dev/projects/counter/</loc>
+  </url><url>
+    <loc>https://richardhere.dev/projects/ptah/</loc>
+  </url><url>
+    <loc>https://richardhere.dev/categories/</loc>
+  </url><url>
+    <loc>https://richardhere.dev/tags/java/</loc>
   </url>
 </urlset>

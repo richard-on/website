@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Fiber on Richard Ragusski</title>
+    <title>Fiber on RichardHere</title>
     <link>https://richardhere.dev/tags/fiber/</link>
-    <description>Recent content in Fiber on Richard Ragusski</description>
-    <image>
-      <url>https://richardhere.dev/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://richardhere.dev/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
-    </image>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="https://richardhere.dev/tags/fiber/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Fiber on RichardHere</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 11 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://richardhere.dev/tags/fiber/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>richardhere.dev</title>
+      <title>Message Coordination Service</title>
+      <link>https://richardhere.dev/projects/mcs/</link>
+      <pubDate>Tue, 11 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://richardhere.dev/projects/mcs/</guid>
+      <description>A message coordination service over email</description>
+    </item>
+    
+    <item>
+      <title>Personal Website</title>
       <link>https://richardhere.dev/projects/website/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 10 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://richardhere.dev/projects/website/</guid>
       <description>Website you are visiting right now.</description>

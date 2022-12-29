@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>C# on RichardHere</title>
+    <link>https://richardhere.dev/tags/c#/</link>
+    <description>Recent content in C# on RichardHere</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 10 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://richardhere.dev/tags/c#/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Build the FAMCS Unity Game</title>
+      <link>https://richardhere.dev/projects/buildthefamcs/</link>
+      <pubDate>Mon, 10 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://richardhere.dev/projects/buildthefamcs/</guid>
+      <description>Website you are visiting right now.</description>
+    </item>
+    
+  </channel>
+</rss>
